@@ -1,0 +1,99 @@
+/* main.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  transition: background 0.3s ease;
+  background: #fff;
+  color: #000;
+}
+
+textarea{
+    font-family: 'Poppins', sans-serif;
+
+}
+body.dark {
+  background: #1e1e1e;
+  color: #eee;
+}
+
+.app {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+header {
+  background-color: #6c5ce7;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+}
+
+.body {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.sub-body {
+  width: 700px;
+  display: flex;
+  gap: 0.7rem;
+  padding-bottom: 10px;
+}
+
+.ul-style {
+  padding: 0;
+  list-style: none;
+  width: 100%;
+}
+
+.li-style {
+  text-align: start;
+  padding: 5px;
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  height: 30px;
+  color: #2d3436;
+}
+
+.tabla-css {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  /* 2 columnas fijas */
+  border: 1px solid #ccc;
+}
+
+.tabla-css>div {
+  padding: 8px;
+  border-bottom: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+}
+
+
+
+.header {
+  background-color: #f0f0f0;
+  font-weight: bold;
+}
+
+.cell {
+  border-bottom: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  padding: 8px;
+}
+
+.tabla-css>.cell:nth-child(2n) {
+  border-right: none;
+  /* última columna de cada fila */
+}
