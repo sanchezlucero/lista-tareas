@@ -13,7 +13,7 @@ const Header = () => {
   };
 
   return (
-    <header style={{background:dark?"#353b48":""}}>
+    <header style={{ background: dark ? "#353b48" : "" }}>
       <h1 style={{ color: "#fff", flex: "1", display: "flex" }}>
         Lista de Tareas
       </h1>
@@ -25,10 +25,6 @@ const Header = () => {
         </label>
         <CiDark style={{ fontSize: "32px", color: "#fff" }} />
       </div>
-
-      {/*    <button onClick={() => setDark(!dark)}>
-        {!dark ? "☀️ Claro" : "🌙 Oscuro"}
-      </button> */}
     </header>
   );
 };

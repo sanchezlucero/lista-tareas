@@ -1,0 +1,63 @@
+.centered-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; /* que cubra toda la pantalla */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* lo coloca arriba */
+  padding-top: 80px; /* ajusta este valor para moverlo más o menos */
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.5); /* fondo oscuro transparente */
+}
+
+
+.modal {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  min-width: 300px;
+  max-width: 500px;
+  display: flex;
+}
+
+.modal-title {
+  text-align: initial;
+  font-weight: 700;
+}
+
+.modal-body {
+  text-align: end;
+  display: flex;
+  justify-content: end;
+  gap: 10px;
+  padding-top: 15px;
+}
+
+.icon-warning {
+  background-color: #fff;
+  border: none;
+  font-size: 24px;
+  color: #ffc312;
+}
+
+.button-cancel {
+  border: none;
+  background: transparent;
+  font-size: 14px;
+  cursor: pointer;
+  color: #141414;
+  padding: 5px;
+}
+
+.button-confirm {
+  background: #fbc531;
+  border: none;
+  border-radius: 3px;
+  color: #141414;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 5px;
+}

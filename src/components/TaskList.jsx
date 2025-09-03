@@ -2,12 +2,15 @@ import { MdCreate, MdDelete } from "react-icons/md";
 import "./../index.css";
 import React, { useEffect, useState } from "react";
 import Drawer from "./Drawer";
+import Modal from "./Modal";
 
 const TaskList = ({ tasks }) => {
   const [tareas, setTareas] = useState(null);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [selectedTask, setSelectedTask] = useState(null);
   const [editText, setEditText] = useState("");
+  const [showModal, setShowModal] = useState(false);
+  const [idSelected, setIdSelected] = useState(0);
 
   useEffect(() => {
     console.log("tasks: ", tasks);
@@ -16,10 +19,6 @@ const TaskList = ({ tasks }) => {
     setTareas(listSaved);
   }, [tasks]);
 
-  useEffect(() => {
-    console.log("tareas: ", tareas);
-  }, [tareas]);
-  console.log("tasks: ", tasks);
   const headers = ["Tareas", "Acciones"];
 
   const handleEditTask = (item) => {
@@ -28,6 +27,10 @@ const TaskList = ({ tasks }) => {
     setIsDrawerOpen(true);
   };
 
+  const handleDeleteTask = (item) => {
+    setShowModal(true);
+    setIdSelected(item.id);
+  };
   const saveText = () => {
     console.log("selectedTask: ", selectedTask);
     const listSaved = JSON.parse(localStorage.getItem("tasks"));
@@ -49,6 +52,20 @@ const TaskList = ({ tasks }) => {
     setIsDrawerOpen(false);
   };
 
+  const handleCancel = () => {
+    setShowModal(false);
+  };
+
+  const handleConfirm = () => {
+    setShowModal(false);
+
+    const listSaved = JSON.parse(localStorage.getItem("tasks"));
+    const newList = listSaved.filter((item) => item.id !== idSelected);
+    setTareas(newList);
+    const addNewList = JSON.stringify(newList);
+    localStorage.setItem("tasks", addNewList);
+  };
+
   return (
     <div className="sub-body">
       <div
@@ -58,7 +75,7 @@ const TaskList = ({ tasks }) => {
       >
         <div className="tabla-css">
           {headers.map((h, i) => (
-            <div key={`header-${i}`} className="header">
+            <div key={`header-${i}`} className={`header `}>
               {h}
             </div>
           ))}
@@ -86,6 +103,7 @@ const TaskList = ({ tasks }) => {
                     fontSize: "17px",
                     color: "#e74c3c",
                   }}
+                  onClick={() => handleDeleteTask(item)}
                 >
                   <MdDelete />
                 </button>
@@ -129,6 +147,7 @@ const TaskList = ({ tasks }) => {
           )}
         </Drawer>
       </div>
+      {showModal && <Modal onCancel={handleCancel} onConfirm={handleConfirm} />}
     </div>
   );
 };
