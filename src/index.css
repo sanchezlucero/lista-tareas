@@ -9,6 +9,9 @@ body {
   background: #fff;
   color: #000;
 }
+button {
+  font-family: "Poppins", sans-serif;
+}
 
 textarea {
   font-family: "Poppins", sans-serif;
@@ -68,8 +71,9 @@ header {
 .tabla-css {
   display: grid;
   grid-template-columns: 1fr auto;
-  /* 2 columnas fijas */
   border: 1px solid #ccc;
+  max-height: 70vh;
+  overflow-y: auto;
 }
 
 .tabla-css > div {

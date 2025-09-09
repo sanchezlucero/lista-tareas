@@ -3,6 +3,7 @@ import "./../index.css";
 import React, { useEffect, useState } from "react";
 import Drawer from "./Drawer";
 import Modal from "./Modal";
+import AlertMessage from "./AlertMessage";
 
 const TaskList = ({ tasks }) => {
   const [tareas, setTareas] = useState(null);
@@ -11,6 +12,8 @@ const TaskList = ({ tasks }) => {
   const [editText, setEditText] = useState("");
   const [showModal, setShowModal] = useState(false);
   const [idSelected, setIdSelected] = useState(0);
+  const [showAlert, setShowAlert] = useState(false);
+  const [textMessage, setTextMessage] = useState("");
 
   useEffect(() => {
     console.log("tasks: ", tasks);
@@ -32,14 +35,17 @@ const TaskList = ({ tasks }) => {
     setIdSelected(item.id);
   };
   const saveText = () => {
+    setTextMessage("La tarea se actualizó correctamente");
+    setShowAlert(true);
+
     console.log("selectedTask: ", selectedTask);
     const listSaved = JSON.parse(localStorage.getItem("tasks"));
 
     const updatedTasks = listSaved.map((item) => {
       if (item.id === selectedTask.id) {
-        return { ...item, text: editText }; // ✅ crea copia modificada
+        return { ...item, text: editText };
       }
-      return item; // ✅ devuelve los que no cambian
+      return item;
     });
 
     localStorage.setItem("tasks", JSON.stringify(updatedTasks));
@@ -58,6 +64,8 @@ const TaskList = ({ tasks }) => {
 
   const handleConfirm = () => {
     setShowModal(false);
+    setShowAlert(true);
+    setTextMessage("La tarea se eliminó correctamente");
 
     const listSaved = JSON.parse(localStorage.getItem("tasks"));
     const newList = listSaved.filter((item) => item.id !== idSelected);
@@ -148,6 +156,14 @@ const TaskList = ({ tasks }) => {
         </Drawer>
       </div>
       {showModal && <Modal onCancel={handleCancel} onConfirm={handleConfirm} />}
+      {showAlert && (
+        <AlertMessage
+          type="success"
+          message={textMessage}
+          duration={3000} // se cierra en 4 segundos
+          onClose={() => setShowAlert(false)}
+        />
+      )}
     </div>
   );
 };

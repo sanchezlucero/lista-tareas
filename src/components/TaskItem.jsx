@@ -1,14 +1,17 @@
 import { useState } from "react";
 import "./../App.css";
+import AlertMessage from "./AlertMessage";
 
 const TaskItem = ({ addTask }) => {
   const [input, setInput] = useState("");
-
+  const [showAlert, setShowAlert] = useState(false);
   const handleAdd = () => {
     if (input.trim()) {
       addTask(input.trim());
       setInput("");
+   
     }
+       setShowAlert(true)
   };
 
   return (
@@ -23,6 +26,14 @@ const TaskItem = ({ addTask }) => {
       <button className="button-add" onClick={handleAdd}>
         Agregar
       </button>
+      {showAlert && (
+        <AlertMessage
+          type="success"
+          message="La tarea se agregó correctamente"
+          duration={3000} // se cierra en 4 segundos
+          onClose={() => setShowAlert(false)}
+        />
+      )}
     </div>
   );
 };

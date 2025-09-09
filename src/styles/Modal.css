@@ -12,7 +12,6 @@
   background: rgba(0, 0, 0, 0.5); /* fondo oscuro transparente */
 }
 
-
 .modal {
   background: white;
   padding: 20px;
@@ -20,7 +19,7 @@
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
   min-width: 300px;
   max-width: 500px;
-  display: flex;
+  /*   display: flex; */
 }
 
 .modal-title {
@@ -34,6 +33,7 @@
   justify-content: end;
   gap: 10px;
   padding-top: 15px;
+  padding-bottom: 10px;
 }
 
 .icon-warning {
@@ -60,4 +60,17 @@
   font-size: 14px;
   cursor: pointer;
   padding: 5px;
+}
+
+.button-close {
+  display: flex;
+  justify-content: end;
+}
+
+.icon-close {
+  border: none;
+  background: transparent;
+  font-size: 16px;
+  color: #e74c3c;
+  cursor: pointer;
 }
